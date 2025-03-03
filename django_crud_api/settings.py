@@ -140,10 +140,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:5173']
+CORS_ORIGIN_WHITELIST = ['http://localhost:5173', 'https://web-production-bc5c9.up.railway.app']
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-c91e.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']
