@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import dj_database_url
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,9 +85,7 @@ WSGI_APPLICATION = "django_crud_api.wsgi.application"
 # }
 
 DATABASES = {
-    "default":
-    dj_database_url.config(default="sqlite:///" +
-                           os.path.join(BASE_DIR, "db.sqlite3"))
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 # Password validation
@@ -128,8 +129,8 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
-  # Tell Django where to look for React's static files (css, js)
-  os.path.join(BASE_DIR, "client", "dist")
+    # Tell Django where to look for React's static files (css, js)
+    os.path.join(BASE_DIR, "client", "dist")
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -144,3 +145,5 @@ CORS_ORIGIN_WHITELIST = ['http://localhost:5173']
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-c91e.up.railway.app']
