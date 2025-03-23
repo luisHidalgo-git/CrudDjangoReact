@@ -3,10 +3,12 @@ import { Navigation } from "./components/Navigation";
 import { TaskFormPage } from "./pages/TaskFormPage";
 import { TasksPage } from "./pages/TasksPage";
 import { Toaster } from "react-hot-toast";
+import Hotjar from "./components/Hotjar";
 
 function App() {
   return (
     <BrowserRouter>
+    <Hotjar />
       <div className="container mx-auto">
         <Navigation />
         <Routes>
